@@ -90,10 +90,13 @@ class MiniMaple{
 			else if(res !== "") res += "+"
 			res += num + cur_res
 		})
-		return (res === "1") ? "" : res
-									.replace(/-1\*/g, "-")
-									.replace(/\+1\*/g, "-")
-									.replace(/\*\*/g, "*")
+		let validate = (res === "1") ? "" : res
+											.replace(/-1\*/g, "-")
+											.replace(/\+1\*/g, "-")
+											.replace(/\*\*/g, "*")
+
+		return (validate.slice(-1) === "*") ? validate.slice(0, -1) : validate
+
 	}
 }
 
