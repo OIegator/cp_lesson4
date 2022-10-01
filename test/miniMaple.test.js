@@ -38,6 +38,6 @@ test('Works correctly for two - digit numbers', () => {
 
 test('Works correctly for two - digit power', () => {
     let mm = new MiniMaple('x^10', 'x')
-    expect(mm.calc()).toBe('10x^9');
+    expect(mm.calc()).toBe('10*x^9');
 });
 

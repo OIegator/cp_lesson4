@@ -72,9 +72,10 @@ class MiniMaple{
 								cur_res += cur_num + key[i]
 							} else {
 								num *= Number(cur_num + key[i])
-								if (pow_x) cur_res += this.x + "^" + (Number(cur_num + key[i]) - 1)
+								if (pow_x) (Number(cur_num + key[i]) > 2) ?
+									cur_res += "*" + this.x + "^" + (Number(cur_num + key[i]) - 1) :
+									cur_res += "*" + this.x
 								cur_num = ""
-								//console.log(num)
 							}
 							break
 						default:
@@ -85,13 +86,14 @@ class MiniMaple{
 
 				}
 			}
-			console.log(cur_res)
 			if(!value) res += "-"
 			else if(res !== "") res += "+"
 			res += num + cur_res
 		})
-		console.log(res.replace(/-1\*/g, "-").replace(/\+1\*/g, "-"))
-		return (res === "1") ? "" : res.replace(/-1\*/g, "-").replace(/\+1\*/g, "-")
+		return (res === "1") ? "" : res
+									.replace(/-1\*/g, "-")
+									.replace(/\+1\*/g, "-")
+									.replace(/\*\*/g, "*")
 	}
 }
 
