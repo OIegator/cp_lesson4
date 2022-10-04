@@ -1,14 +1,17 @@
 document.addEventListener('DOMContentLoaded',setup)
+import {MiniMaple} from "../src/miniMaple";
 
 function setup() {
-    document.getElementById('demoButton').onclick = addSomething;
+
+	document.getElementById('submit').onclick = submitIt;
 }
 
-function addSomething(){
-    const someDummyDiv = document.createElement('div');
-    someDummyDiv.classList.add('generated');
-    const count = document.getElementsByClassName('generated').length;
-    someDummyDiv.innerHTML = `I was created by JS! There are already ${count} of my friends!`;
-    const container = document.getElementById('container');
-    container.appendChild(someDummyDiv);
+
+function submitIt(){
+	const exp = document.getElementById('exp').value
+	const varx = document.getElementById('varx').value
+	let mm = new MiniMaple(exp, varx)
+	const answer = mm.calc()
+    document.getElementById('ans').innerHTML = `Answer: ${answer}` 
+
 }

@@ -12,18 +12,14 @@ class MiniMaple{
 		for(let i = 0; i < str.length; i++) {
 			switch (str[i]) {
 				case '-':
-					if (buff) {
-						this.units.set(buff, cur_sign)
-						buff = ""
-					}
+					this.units.set(buff, cur_sign)
+					buff = ""
 					cur_sign = false
 					break
 
 				case '+':
-					if (buff) {
-						this.units.set(buff, cur_sign)
-						buff = ""
-					}
+					this.units.set(buff, cur_sign)
+					buff = ""
 					cur_sign = true
 					break
 
@@ -85,16 +81,15 @@ class MiniMaple{
 					}
 
 				}
+				if(!value) res += "-"
+				else if(res !== "") res += "+"
+				res += num + cur_res
 			}
-			if(!value) res += "-"
-			else if(res !== "") res += "+"
-			res += num + cur_res
-		})
-		let validate = (res === "1") ? "" : res
-											.replace(/-1\*/g, "-")
-											.replace(/\+1\*/g, "-")
-											.replace(/\*\*/g, "*")
 
+		})
+		let validate = res.replace(/-1\*/g, "-")
+						  .replace(/\+1\*/g, "-")
+						  .replace(/\*\*/g, "*")
 		return (validate.slice(-1) === "*") ? validate.slice(0, -1) : validate
 
 	}

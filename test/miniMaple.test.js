@@ -6,12 +6,12 @@ test('Work for a single unit', () => {
 });
 
 test('Work for a several units', () => {
-	let mm = new MiniMaple('4*x^3-x^2', 'x')
-    expect(mm.calc()).toBe('12*x^2-2*x');
+	let mm = new MiniMaple('4*x^3+x^2+x', 'x')
+    expect(mm.calc()).toBe('12*x^2+2*x+1');
 });
 
 test('Returns empty string, when no units attached to this variable', () => {
-	let mm = new MiniMaple('4*x^3', 'y')
+	let mm = new MiniMaple('4*x^3+x', 'y')
     expect(mm.calc()).toBe('');
 });
 
@@ -20,7 +20,7 @@ test('Returns empty string from empty string', () => {
     expect(mm.calc()).toBe('');
 });
 
-test('Not loosing negative on first unit', () => {
+test('Not losing negative on first unit', () => {
 	let mm = new MiniMaple('-4*x^3-x^2', 'x')
     expect(mm.calc()).toBe('-12*x^2-2*x');
 });
