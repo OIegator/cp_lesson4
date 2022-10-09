@@ -34,10 +34,10 @@ class MiniMaple{
 		let res = ""
 		this.units.forEach((value, key) => {
 			let num = 1
+			let pow_x = 0
 			let cur_res = ""
 			let cur_num = ""
 			let after_x = false
-			let pow_x = 0
 			let pow_any = false
 			if(key.includes(this.x)) {
 				for(let i = 0; i < key.length; i++) {
@@ -68,9 +68,11 @@ class MiniMaple{
 								cur_res += cur_num + key[i]
 							} else {
 								num *= Number(cur_num + key[i])
-								if (pow_x) (Number(cur_num + key[i]) > 2) ?
-									cur_res += "*" + this.x + "^" + (Number(cur_num + key[i]) - 1) :
+								if (pow_x) {
 									cur_res += "*" + this.x
+									if (Number(cur_num + key[i]) > 2)
+										cur_res += "^" + (Number(cur_num + key[i]) - 1)
+								}
 								cur_num = ""
 							}
 							break
